@@ -1,7 +1,7 @@
 # JavaExamples
 Simple experimental Java program examples
 
-* [BirIslem](https://github.com/tekrei/JavaExamples/tree/master/BirIslem): An implementation of 
+* [BirIslem](https://github.com/tekrei/JavaExamples/tree/master/BirIslem): An educational implementation of Bir İşlem (Le compte est bon - the total is right) game using genetic algorithms (comments are in Turkish)
 * [Chat](https://github.com/tekrei/JavaExamples/tree/master/Chat): A chat implementation from 2007 internship
 * [NotDefteri](https://github.com/tekrei/JavaExamples/tree/master/NotDefteri): Very simple notepad implementation which is able to load TXT files
 * [SimpleBrowser](https://github.com/tekrei/JavaExamples/tree/master/SimpleBrowser): An example browser implementation from 2009 which uses sqlite3 to store sites
