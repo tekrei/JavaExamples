@@ -11,6 +11,7 @@ Simple experimental Java program examples
 * [CurrencyReader](https://github.com/tekrei/JavaExamples/tree/master/CurrencyReader): A XML reading and parsing example (2006)
 * [ThreadSync](https://github.com/tekrei/JavaExamples/tree/master/ThreadSync): A thread synchronization example (2006)
 * [CountRices](https://github.com/tekrei/JavaExamples/tree/master/CountRices): [Rice](https://it.mathworks.com/help/images/image-enhancement-and-analysis.html) count calculation using [Image Processing filters](http://www.jhlabs.com/ip/filters/index.html) (2006)
+* [JDIP](https://github.com/tekrei/JavaExamples/tree/master/JDIP): A simple Digital Image Processing application that shows various [Image Processing filters](http://www.jhlabs.com/ip/filters/index.html) on images (2006)
 * [Reflection](https://github.com/tekrei/JavaExamples/tree/master/Reflection): [Java Reflection API](https://docs.oracle.com/javase/tutorial/reflect/) usage example with in Java (2005)
 
 ##LICENSE
