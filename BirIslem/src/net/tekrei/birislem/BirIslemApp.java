@@ -1,7 +1,7 @@
 /*
  * BirIslem Java ile yazilmis ve Genetik Algoritma kullanimini ornekleme
  * amaci guden bir ozgur yazilimdir. 
- * Copyright (C) 2007 Tahir Emre KALAYCI (http://kodveus.blogspot.com)
+ * Copyright (C) 2007 T. E. KALAYCI (http://kodveus.blogspot.com)
  *  
  * BirIslem is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
