@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>tekrei</groupId>
+    <artifactId>JavaExamples</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    <name>Parent Project of Java Example Projects</name>
+    <url>https://tekrei.github.io</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:git@github.com:tekrei/JavaExamples.git</connection>
+        <developerConnection>scm:git:git@github.com:tekrei/JavaExamples.git</developerConnection>
+        <url>git@github.com:tekrei/JavaExamples.git</url>
+        <tag>HEAD</tag>
+    </scm>
+    <developers>
+        <developer>
+            <id>tekrei</id>
+            <name>T. E. KALAYCI</name>
+        </developer>
+    </developers>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <logback.version>1.2.3</logback.version>
+        <maven.compiler.version>3.6.1</maven.compiler.version>
+        <junit.jupiter.version>5.0.0-M4</junit.jupiter.version>
+        <junit.platform.version>1.0.0-M4</junit.platform.version>
+    </properties>
+    <modules>
+        <module>DB2POJO</module>
+        <module>BirIslem</module>
+        <module>Chat</module>
+        <module>CurrencyReader</module>
+        <module>Java3DExamples</module>
+        <module>JDIP</module>
+        <module>NotDefteri</module>
+        <module>Reflection</module>
+        <module>SimpleBrowser</module>
+        <module>SocketCalculator</module>
+        <module>ThreadSync</module>
+        <module>xox</module>
+    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>${junit.platform.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

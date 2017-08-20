@@ -2,7 +2,10 @@ package j3d.panels;
 
 import com.sun.j3d.utils.geometry.Box;
 
-import javax.media.j3d.*;
+import javax.media.j3d.Appearance;
+import javax.media.j3d.Material;
+import javax.media.j3d.TransformGroup;
+import javax.media.j3d.TransparencyAttributes;
 import javax.vecmath.Point3f;
 import javax.vecmath.Vector3f;
 import java.awt.*;

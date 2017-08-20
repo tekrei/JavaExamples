@@ -3,3 +3,6 @@
 **/CVS
 **/classes
 **/.settings
+.idea
+**/*.iml
+**/target/

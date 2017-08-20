@@ -10,7 +10,7 @@ public class TexturedBox extends Java3DPanel {
     }
 
     @Override
-    void buildScene(TransformGroup transformGroup) throws Exception{
-        transformGroup.addChild(new Box(0.7f, 0.5f, 0.5f,Box.GENERATE_TEXTURE_COORDS | Box.GENERATE_NORMALS, getTextureAppearance("/sky.jpg")));
+    void buildScene(TransformGroup transformGroup) throws Exception {
+        transformGroup.addChild(new Box(0.7f, 0.5f, 0.5f, Box.GENERATE_TEXTURE_COORDS | Box.GENERATE_NORMALS, getTextureAppearance("/sky.jpg")));
     }
 }
