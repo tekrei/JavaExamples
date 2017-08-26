@@ -49,6 +49,7 @@
         <module>SocketCalculator</module>
         <module>ThreadSync</module>
         <module>xox</module>
+        <module>OnlineTranslator</module>
     </modules>
     <build>
         <plugins>
