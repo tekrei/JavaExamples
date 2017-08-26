@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!--Bu jnlp dosyasinin bulundugu host ve adi-->
+  <jnlp spec="1.0+"
+        codebase="https://tekrei.github.io/projects"
+        href="notdefteri.jnlp">
+<!-- Programla ilgili bilgileri-->
+    <information> 
+      <title>Not Defteri</title> 
+      <vendor>Kod ve Us</vendor> 
+      <homepage href="http://kodveus.blogspot.com/"/>
+      <description>Basit Not Defteri</description>
+      <description kind="short">Basit Bir Not Defteri</description> 
+      <offline-allowed/>
+    </information>
+<!-- Imzalamamizin sebebi bu not defterinin dosya islemleri yapmasi burada bu yuzden tam izin vermemiz-->
+    <security>
+      <all-permissions/>
+    </security>
+<!-- Programin ana sinifi-->
+   <application-desc main-class="net.kodveus.jws.NotDefteri"> 
+   </application-desc>
+<!-- Programin kullandigi kaynaklar (jar dosyalari)-->
+    <resources> 
+<!--Biz kodumuzu j2se 1.8 e gore gelistirdik-->
+      <j2se version="1.8+"/> 
+      <jar href="notdefteri.jar" main="true"/> 
+    </resources> 
+  </jnlp>
