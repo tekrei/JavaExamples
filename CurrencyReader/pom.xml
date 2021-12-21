@@ -6,9 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>CurrencyReader</artifactId>
     <name>read latest currency exchange values</name>
+    <properties>
+        <main.class>currencyreader.CurrencyFrame</main.class>
+    </properties>
     <parent>
-        <groupId>tekrei</groupId>
-        <artifactId>JavaExamples</artifactId>
+        <groupId>javaexamples</groupId>
+        <artifactId>main</artifactId>
         <version>1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>

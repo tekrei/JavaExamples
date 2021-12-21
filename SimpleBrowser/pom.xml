@@ -5,9 +5,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>SimpleBrowser</artifactId>
+    <properties>
+        <main.class>browser.Main</main.class>
+    </properties>
     <parent>
-        <groupId>tekrei</groupId>
-        <artifactId>JavaExamples</artifactId>
+        <groupId>javaexamples</groupId>
+        <artifactId>main</artifactId>
         <version>1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -15,7 +18,7 @@
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
-            <version>3.20.0</version>
+            <version>3.36.0</version>
         </dependency>
     </dependencies>
 </project>

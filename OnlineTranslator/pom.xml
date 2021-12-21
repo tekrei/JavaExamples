@@ -5,9 +5,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>OnlineTranslator</artifactId>
+    <properties>
+        <main.class>translator.Main</main.class>
+    </properties>
     <parent>
-        <groupId>tekrei</groupId>
-        <artifactId>JavaExamples</artifactId>
+        <groupId>javaexamples</groupId>
+        <artifactId>main</artifactId>
         <version>1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -15,7 +18,7 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.10</version>
+            <version>1.15</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -25,7 +28,7 @@
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.14.2</version>
+            <version>1.14.3</version>
         </dependency>
     </dependencies>
 </project>
