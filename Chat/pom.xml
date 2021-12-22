@@ -6,23 +6,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>Chat</artifactId>
     <name>Chat Program</name>
+    <properties>
+        <main.class>chat.Chat</main.class>
+    </properties>
     <parent>
-        <groupId>tekrei</groupId>
-        <artifactId>JavaExamples</artifactId>
+        <groupId>javaexamples</groupId>
+        <artifactId>main</artifactId>
         <version>1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

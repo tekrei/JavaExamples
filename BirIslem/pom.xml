@@ -6,46 +6,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>BirIslem</artifactId>
     <name>Bir İşlem Yarışması</name>
+    <properties>
+        <main.class>birislem.BirIslemApp</main.class>
+    </properties>
     <parent>
-        <groupId>tekrei</groupId>
-        <artifactId>JavaExamples</artifactId>
+        <groupId>javaexamples</groupId>
+        <artifactId>main</artifactId>
         <version>1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <archive>
-                                <manifest>
-                                    <mainClass>net.tekrei.birislem.BirIslemApp</mainClass>
-                                </manifest>
-                            </archive>
-                            <descriptorRefs>
-                                <descriptorRef>jar-with-dependencies</descriptorRef>
-                            </descriptorRefs>
-                            <appendAssemblyId>false</appendAssemblyId>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>
