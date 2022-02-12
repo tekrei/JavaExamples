@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?> 
+<?xml version="1.0" encoding="utf-8"?>
 <!--Bu jnlp dosyasinin bulundugu host ve adi-->
-  <jnlp spec="1.0+"
-        codebase="https://tekrei.gitlab.io/projects"
-        href="notepad.jnlp">
-<!-- Programla ilgili bilgileri-->
-    <information> 
-      <title>Not Defteri</title> 
-      <vendor>Kod ve Us</vendor> 
-      <homepage href="http://kodveus.blogspot.com/"/>
-      <description>Simple Notepad</description>
-      <description kind="short">A simple notepad</description> 
-      <offline-allowed/>
+<jnlp spec="1.0+"
+      codebase="https://tekrei.gitlab.io/projects"
+      href="notepad.jnlp">
+    <!-- Programla ilgili bilgileri-->
+    <information>
+        <title>Not Defteri</title>
+        <vendor>Kod ve Us</vendor>
+        <homepage href="https://kodveus.blogspot.com/"/>
+        <description>Simple Notepad</description>
+        <description kind="short">A simple notepad</description>
+        <offline-allowed/>
     </information>
-<!-- Imzalamamizin sebebi bu not defterinin dosya islemleri yapmasi burada bu yuzden tam izin vermemiz-->
+    <!-- Imzalamamizin sebebi bu not defterinin dosya islemleri yapmasi burada bu yuzden tam izin vermemiz-->
     <security>
-      <all-permissions/>
+        <all-permissions/>
     </security>
-<!-- Programin ana sinifi-->
-   <application-desc main-class="notepad.Main"> 
-   </application-desc>
-<!-- Programin kullandigi kaynaklar (jar dosyalari)-->
-    <resources> 
-<!--Biz kodumuzu j2se 1.11 e gore gelistirdik-->
-      <j2se version="1.11+"/> 
-      <jar href="notepad.jar" main="true"/> 
-    </resources> 
-  </jnlp>
+    <!-- Programin ana sinifi-->
+    <application-desc main-class="notepad.Main">
+    </application-desc>
+    <!-- Programin kullandigi kaynaklar (jar dosyalari)-->
+    <resources>
+        <!--Biz kodumuzu j2se 1.11 e gore gelistirdik-->
+        <j2se version="1.11+"/>
+        <jar href="notepad.jar" main="true"/>
+    </resources>
+</jnlp>

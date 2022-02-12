@@ -1,7 +1,7 @@
 package translator.data;
 
-import translator.utility.HttpUtility;
 import org.jsoup.Jsoup;
+import translator.utility.HttpUtility;
 
 public class Tureng implements Translator {
     private final Language[] supportedLanguages = new Language[]{

@@ -3,19 +3,19 @@ package chat;
 import javax.swing.*;
 import java.awt.*;
 
-public class Chat extends JFrame {
+public class Main extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
     private JPanel jContentPane = null;
 
-    private Chat() {
+    private Main() {
         super();
         initialize();
     }
 
     public static void main(String[] args) {
-        new Chat();
+        new Main();
     }
 
     private void initialize() {
@@ -42,9 +42,9 @@ public class Chat extends JFrame {
     private JTabbedPane getTabbedPane() {
         JTabbedPane tabbedPane = new JTabbedPane();
         // Sunucu paneli ekleyelim
-        tabbedPane.add("Sunucu", new SunucuPanel());
+        tabbedPane.add("Sunucu", new ServerPanel());
         // Istemci paneli ekleyelim
-        tabbedPane.add("İstemci", new IstemciPanel());
+        tabbedPane.add("İstemci", new ClientPanel());
         return tabbedPane;
     }
 

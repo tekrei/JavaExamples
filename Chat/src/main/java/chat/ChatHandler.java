@@ -8,13 +8,13 @@ import java.util.Vector;
 class ChatHandler extends Thread {
     private static final Vector<ChatHandler> handlers = new Vector<>();
     private final Socket s;
-    private final DataOutputStream o;
-    private DataInputStream i;
+    private final DataOutputStream dataOutputStream;
+    private final DataInputStream dataInputStream;
 
     ChatHandler(Socket s) throws IOException {
         this.s = s;
-        i = new DataInputStream(new BufferedInputStream(s.getInputStream()));
-        o = new DataOutputStream(new BufferedOutputStream(s.getOutputStream()));
+        dataInputStream = new DataInputStream(new BufferedInputStream(s.getInputStream()));
+        dataOutputStream = new DataOutputStream(new BufferedOutputStream(s.getOutputStream()));
     }
 
     private static void broadcast(String message) {
@@ -23,10 +23,10 @@ class ChatHandler extends Thread {
             while (e.hasMoreElements()) {
                 ChatHandler c = e.nextElement();
                 try {
-                    synchronized (c.o) {
-                        c.o.writeUTF(message);
+                    synchronized (c.dataOutputStream) {
+                        c.dataOutputStream.writeUTF(message);
                     }
-                    c.o.flush();
+                    c.dataOutputStream.flush();
                 } catch (IOException ex) {
                     c.interrupt();
                 }
@@ -39,10 +39,10 @@ class ChatHandler extends Thread {
         try {
             broadcast(name + " has joined.");
             handlers.addElement(this);
-            while (true) {
-                String msg = i.readUTF();
+            do {
+                String msg = dataInputStream.readUTF();
                 broadcast(name + " - " + msg);
-            }
+            } while (true);
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {

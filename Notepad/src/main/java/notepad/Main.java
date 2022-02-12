@@ -129,7 +129,7 @@ public class Main extends JFrame {
 
         //Daha sonra selectedFile uzerine kayit yapalim
         String dosya = selectedFile.getAbsolutePath();
-        if(selectedFile.delete()) {
+        if (selectedFile.delete()) {
             selectedFile = new File(dosya);
 
             //Dolduralim

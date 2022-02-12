@@ -11,7 +11,7 @@ import java.net.Socket;
 /**
  * Client of calculator with Swing based GUI
  */
-public class CalcClientFrame extends JFrame {
+public class Client extends JFrame {
     private JTextField txtNumber1 = null;
     private JTextField txtNumber2 = null;
     private JLabel lblResult = null;
@@ -22,14 +22,14 @@ public class CalcClientFrame extends JFrame {
     /**
      * Constructor
      */
-    private CalcClientFrame() {
+    private Client() {
         super();
         // initialize the UI
         initialize();
     }
 
     public static void main(String[] args) {
-        new CalcClientFrame();
+        new Client();
     }
 
     /**

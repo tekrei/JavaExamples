@@ -4,16 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>javaexamples</groupId>
-    <artifactId>main</artifactId>
+    <groupId>net</groupId>
+    <artifactId>javaexamples</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
     <name>Parent Project of Java Example Projects</name>
-    <url>https://tekrei.github.io</url>
+    <url>https://github.com/tekrei/JavaExamples</url>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
     <scm>
@@ -32,8 +32,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
         <logback.version>1.2.3</logback.version>
-        <maven.compiler.version>3.8.1</maven.compiler.version>
-        <maven.surefire.version>2.22.2</maven.surefire.version>
         <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <junit.platform.version>1.3.2</junit.platform.version>
     </properties>
@@ -44,7 +42,7 @@
         <module>CurrencyReader</module>
         <module>Java3DExamples</module>
         <module>JDIP</module>
-        <module>NotDefteri</module>
+        <module>Notepad</module>
         <module>Reflection</module>
         <module>SimpleBrowser</module>
         <module>SocketCalculator</module>
@@ -57,19 +55,18 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.version}</version>
+                <version>3.9.0</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <release>11</release>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.version}</version>
+                <version>2.22.1</version>
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven.surefire.version}</version>
+                <version>2.22.2</version>
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -82,6 +79,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
+                                    <!--suppress UnresolvedMavenProperty -->
                                     <mainClass>${main.class}</mainClass>
                                 </manifest>
                             </archive>

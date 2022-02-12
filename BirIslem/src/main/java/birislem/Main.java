@@ -1,25 +1,25 @@
 /*
  * BirIslem Java ile yazilmis ve Genetik Algoritma kullanimini ornekleme
- * amaci guden bir ozgur yazilimdir. 
+ * amaci guden bir ozgur yazilimdir.
  * Copyright (C) 2007
- *  
+ *
  * BirIslem is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 package birislem;
 
-import birislem.araclar.SayiArac;
+import birislem.utility.NumberUtility;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
@@ -30,7 +30,7 @@ import java.awt.*;
  * bilesenlerini hazirlayip yuklemek ayrica kullanici etkilesimini saglayarak
  * genetik algoritmanin tetiklenmesi gorevini de gerceklestirmektedir.
  */
-public class BirIslemApp extends JFrame {
+public class Main extends JFrame {
 
     // Hesaplamada kullanilacak olan sayilar
     private JFormattedTextField txtSayi1;
@@ -47,7 +47,7 @@ public class BirIslemApp extends JFrame {
     /**
      * yapici metot
      */
-    private BirIslemApp() {
+    private Main() {
         super();
         initialize();
     }
@@ -56,7 +56,7 @@ public class BirIslemApp extends JFrame {
      * Uygulamayi baslatan ana metot
      */
     public static void main(String[] args) {
-        new BirIslemApp().setVisible(true);
+        new Main().setVisible(true);
     }
 
     /**
@@ -132,7 +132,7 @@ public class BirIslemApp extends JFrame {
             // 100 ile 999 arasinda sayi uretip hedef sayi metin alanina
             // yaziyoruz
             txtHedefSayi.setText(""
-                    + (SayiArac.getInstance().nextInt(1000) + 100));
+                    + (NumberUtility.getInstance().nextInt(1000) + 100));
         });
         return btn;
     }
@@ -186,7 +186,7 @@ public class BirIslemApp extends JFrame {
             // GenetikHesaplama sinifinda elimizdeki sayilara gore
             // hesaplama yapip sonucu cozum etiketine yazalim
             lblCozum.setText(""
-                    + GenetikHesaplama.getInstance().hesapla(
+                    + GeneticAlgorithm.getInstance().hesapla(
                     new int[]{sayi1, sayi2, sayi3, sayi4, sayi5,
                             sayi6}, hedefSayi));
         }
@@ -198,13 +198,13 @@ public class BirIslemApp extends JFrame {
     private void rastgeleSayilariUret() {
         // Ilk 5 sayi 1 ile 9 arasinda (1 ve 9 dahil) herhangi bir sayi
         // olabilir
-        txtSayi1.setText("0" + (SayiArac.getInstance().nextInt(9) + 1));
-        txtSayi2.setText("0" + (SayiArac.getInstance().nextInt(9) + 1));
-        txtSayi3.setText("0" + (SayiArac.getInstance().nextInt(9) + 1));
-        txtSayi4.setText("0" + (SayiArac.getInstance().nextInt(9) + 1));
-        txtSayi5.setText("0" + (SayiArac.getInstance().nextInt(9) + 1));
+        txtSayi1.setText("0" + (NumberUtility.getInstance().nextInt(9) + 1));
+        txtSayi2.setText("0" + (NumberUtility.getInstance().nextInt(9) + 1));
+        txtSayi3.setText("0" + (NumberUtility.getInstance().nextInt(9) + 1));
+        txtSayi4.setText("0" + (NumberUtility.getInstance().nextInt(9) + 1));
+        txtSayi5.setText("0" + (NumberUtility.getInstance().nextInt(9) + 1));
         // 6. sayi 10-25-50-75 ve 100 olabilir
-        int rnd = SayiArac.getInstance().nextInt(5);
+        int rnd = NumberUtility.getInstance().nextInt(5);
         if (rnd == 0) {
             txtSayi6.setText("010");
         } else {

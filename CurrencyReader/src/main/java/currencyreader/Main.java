@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Vector;
 
-public class CurrencyFrame extends JFrame {
+public class Main extends JFrame {
     private static final long serialVersionUID = 1L;
 
     private JTextField txtValue = null;
@@ -13,13 +13,13 @@ public class CurrencyFrame extends JFrame {
     private JTextField txtConversionResult = null;
     private JButton btnCrossrate = null;
 
-    private CurrencyFrame() {
+    private Main() {
         super();
         initialize();
     }
 
     public static void main(String[] args) {
-        new CurrencyFrame();
+        new Main();
     }
 
     private void initialize() {

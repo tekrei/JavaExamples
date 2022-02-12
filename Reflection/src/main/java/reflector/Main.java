@@ -3,26 +3,26 @@ package reflector;
 import java.lang.reflect.*;
 import java.util.ArrayList;
 
-public class ReflectionExample {
+public class Main {
     public static final int i = 42;
-    @SuppressWarnings("CanBeFinal")
-    private double d = 3.14;
     String s = "example";
     @SuppressWarnings("CanBeFinal")
-    private String className = "reflector.ReflectionExample";
+    private final double d = 3.14;
+    @SuppressWarnings("CanBeFinal")
+    private final String className = "reflector.ReflectionExample";
 
-    private ReflectionExample() {
+    private Main() {
     }
 
-    protected ReflectionExample(int i, double d) {
+    protected Main(int i, double d) {
     }
 
-    public ReflectionExample(Integer a, Integer b) {
+    public Main(Integer a, Integer b) {
         System.out.println("a = " + a + " b = " + b);
     }
 
     public static void main(String[] args) {
-        ReflectionExample example = new ReflectionExample();
+        Main example = new Main();
         example.constructorInformation();
         example.fieldInformation();
         example.methodInformation();
@@ -164,7 +164,7 @@ public class ReflectionExample {
             //get field 'd' from class
             Field fld = cls.getDeclaredField("d");
             //instantiate a new object of the class
-            ReflectionExample f2obj = new ReflectionExample();
+            Main f2obj = new Main();
             //display current value of 'd'
             System.out.println("current value of d = " + f2obj.d);
             //change value o 'd' as 12.34
@@ -252,7 +252,7 @@ public class ReflectionExample {
             //get method named 'add' with parameters of types
             Method method = cls.getDeclaredMethod("add", types);
             //initiate an object of class
-            ReflectionExample object = new ReflectionExample();
+            Main object = new Main();
             //prepare arguments
             Object[] arguments = {42, 42};
             //invoke the method over the object we initiated

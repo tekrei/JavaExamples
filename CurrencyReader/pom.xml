@@ -7,11 +7,11 @@
     <artifactId>CurrencyReader</artifactId>
     <name>read latest currency exchange values</name>
     <properties>
-        <main.class>currencyreader.CurrencyFrame</main.class>
+        <main.class>currencyreader.Main</main.class>
     </properties>
     <parent>
-        <groupId>javaexamples</groupId>
-        <artifactId>main</artifactId>
+        <groupId>net</groupId>
+        <artifactId>javaexamples</artifactId>
         <version>1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>

@@ -19,9 +19,9 @@
  */
 package birislem;
 
-import birislem.araclar.SayiArac;
-import birislem.exception.KesirliBolmeException;
-import birislem.exception.SonucErkenBulunduException;
+import birislem.exception.EarlyConvergenceException;
+import birislem.exception.FractionDivideException;
+import birislem.utility.NumberUtility;
 
 import java.util.Arrays;
 
@@ -29,7 +29,7 @@ import java.util.Arrays;
  * Bu sinif bireylerimizin (krozomlarin) genlerini saklayan ve ilgili
  * metotlarini gerceklestiren siniftir.
  */
-public class Kromozom implements Comparable<Kromozom> {
+public class Chromosome implements Comparable<Chromosome> {
 
     // Hesaplama sayilarinin kullanim sirasini tutan saha
     private int[] sayilar;
@@ -37,7 +37,7 @@ public class Kromozom implements Comparable<Kromozom> {
     private int[] operatorler;
 
     // Yapici
-    Kromozom(int[] _sayilar, int[] _operatorler) {
+    Chromosome(int[] _sayilar, int[] _operatorler) {
         sayilar = _sayilar;
         operatorler = _operatorler;
     }
@@ -49,19 +49,19 @@ public class Kromozom implements Comparable<Kromozom> {
      */
     private int getDeger() {
         try {
-            return SayiArac.getInstance().getHesapSonuc(sayilar, operatorler);
-        } catch (KesirliBolmeException kbe) {
+            return NumberUtility.getInstance().getHesapSonuc(sayilar, operatorler);
+        } catch (FractionDivideException kbe) {
             // Eger kesirli bolme varsa bu kromozom hatalidir
             // En dusuk deger olan 0'i dondurmelidir.
             return 0;
-        } catch (SonucErkenBulunduException sebe) {
+        } catch (EarlyConvergenceException sebe) {
             // Sayiya erken ulastik
             // Pozitifini alalim
             // Bu sayidan sonraki sayilari atacagiz
-            for (int i = sebe.getHangiOperator(); i < operatorler.length; i++) {
-                operatorler[i] = SayiArac.KULLANMA;
+            for (int i = sebe.getWhichOperator(); i < operatorler.length; i++) {
+                operatorler[i] = NumberUtility.KULLANMA;
             }// Hedef sayiya ulastik
-            return SayiArac.getInstance().getHedefSayi();
+            return NumberUtility.getInstance().getHedefSayi();
         }
     }
 
@@ -86,7 +86,7 @@ public class Kromozom implements Comparable<Kromozom> {
         // 0'dan mutlak olarak uzakligi bu kromozomun uygunlugudur
         // Uygunlugu 0'a yakin olan kromozom daha uzak olan kromozomdan kotudur
         return java.lang.Math.abs(getDeger()
-                - SayiArac.getInstance().getHedefSayi());
+                - NumberUtility.getInstance().getHedefSayi());
     }
 
     void setSayi(int hangi, int sayi) {
@@ -101,7 +101,7 @@ public class Kromozom implements Comparable<Kromozom> {
      * Kromozomu ekrana yazdirmada kullanilan ve metin olarak ureten metot
      */
     public String toString() {
-        return SayiArac.getInstance().toString(sayilar, operatorler)
+        return NumberUtility.getInstance().toString(sayilar, operatorler)
                 + " Değer:" + getDeger() + " Uygunluk:" + uygunluk();
     }
 
@@ -109,7 +109,7 @@ public class Kromozom implements Comparable<Kromozom> {
      * Siralama isleminde kullanilan karsilastirma metotu
      */
     @Override
-    public int compareTo(Kromozom o) {
+    public int compareTo(Chromosome o) {
         // Sonuc 0 ise iki kromozom aynidir
         // Sonuc >0 ise ilk kromozom ikincisinden kotudur
         // Sonuc <0 ise ilk kromozom ikincisinden iyidir
@@ -120,7 +120,7 @@ public class Kromozom implements Comparable<Kromozom> {
      * Bu metot bu kromozomun aynisinin farkli bir bellek alaninda
      * olusturulmasini sagliyor
      */
-    Kromozom getClone() {
-        return new Kromozom(Arrays.copyOf(sayilar, sayilar.length), Arrays.copyOf(operatorler, operatorler.length));
+    Chromosome getClone() {
+        return new Chromosome(Arrays.copyOf(sayilar, sayilar.length), Arrays.copyOf(operatorler, operatorler.length));
     }
 }

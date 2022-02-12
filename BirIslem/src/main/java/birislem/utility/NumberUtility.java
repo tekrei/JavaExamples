@@ -17,10 +17,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-package birislem.araclar;
+package birislem.utility;
 
-import birislem.exception.KesirliBolmeException;
-import birislem.exception.SonucErkenBulunduException;
+import birislem.exception.EarlyConvergenceException;
+import birislem.exception.FractionDivideException;
 
 import java.util.Random;
 
@@ -28,7 +28,7 @@ import java.util.Random;
  * Bu sinif sayi hesaplama ve metine donusturme islemlerini kolaylastirmak ve
  * saklanmasi gereken verileri saklamak icin kullanilmaktadir
  */
-public class SayiArac {
+public class NumberUtility {
 
     // Operatorler
     public static final int KULLANMA = 0;
@@ -37,7 +37,7 @@ public class SayiArac {
     public static final int CARPI = 3;
     public static final int BOLU = 4;
     // Bu sinif bir singleton desen gerceklestirimidir
-    private static SayiArac instance = null;
+    private static NumberUtility instance = null;
     // Rastgele sayi uretecimiz
     private final Random generator;
     // Ulasmaya calistigimiz sayi
@@ -45,7 +45,7 @@ public class SayiArac {
     // Hesaplamada kullanilacak sayilar
     private int[] hesaplamaSayilari;
 
-    private SayiArac() {
+    private NumberUtility() {
         // Ilklendigi zaman rastgele sayi uretecini ilkleyelim
         generator = new Random();
     }
@@ -53,9 +53,9 @@ public class SayiArac {
     /**
      * Singleton ornek dondurucu
      */
-    public static SayiArac getInstance() {
+    public static NumberUtility getInstance() {
         if (instance == null) {
-            instance = new SayiArac();
+            instance = new NumberUtility();
         }
         return instance;
     }
@@ -154,11 +154,11 @@ public class SayiArac {
      * @param sayilar     hesaplamada kullanilacak sayilara indisler
      * @param operatorler hesaplamada kullanilacak operatorler
      * @return hesaplama sonucu (tamsayi)
-     * @throws KesirliBolmeException      eger bolme islemi tamsayi sonuc uretmiyorsa
-     * @throws SonucErkenBulunduException hesaplamanin erken asamalarinda hedefe ulasirsak
+     * @throws FractionDivideException   eger bolme islemi tamsayi sonuc uretmiyorsa
+     * @throws EarlyConvergenceException hesaplamanin erken asamalarinda hedefe ulasirsak
      */
     public int getHesapSonuc(int[] sayilar, int[] operatorler)
-            throws KesirliBolmeException, SonucErkenBulunduException {
+            throws FractionDivideException, EarlyConvergenceException {
         int hesapSonucu;
         int hangiSayi;
         int baslangic = 0;
@@ -168,31 +168,31 @@ public class SayiArac {
         hangiSayi = 1;
         /*
          * } else { hesapSonucu = hesaplamaSayilari[sayilar[1]]; hangiSayi = 2;
-		 * baslangic = 1; }
-		 */
+         * baslangic = 1; }
+         */
         for (int i = baslangic; i < operatorler.length; i++) {
             int sayi = hesaplamaSayilari[sayilar[hangiSayi]];
-            if (operatorler[i] == SayiArac.ARTI) {
+            if (operatorler[i] == NumberUtility.ARTI) {
                 hesapSonucu += sayi;
             }
-            if (operatorler[i] == SayiArac.CARPI) {
+            if (operatorler[i] == NumberUtility.CARPI) {
                 hesapSonucu *= sayi;
             }
-            if (operatorler[i] == SayiArac.BOLU) {
+            if (operatorler[i] == NumberUtility.BOLU) {
                 if (hesapSonucu % sayi != 0) {
                     // FIX Bolme isleminde mutlaka tam sayi elde etmeliyiz
                     // FIX her seferinde yeni bir ornek yaratmak
                     // gereksiz zaman harcatiyordu bunun yerine
                     // singleton kullanildi
-                    throw KesirliBolmeException.getInstance();
+                    throw FractionDivideException.getInstance();
                 }
                 hesapSonucu /= sayi;
             }
-            if (operatorler[i] == SayiArac.EKSI) {
+            if (operatorler[i] == NumberUtility.EKSI) {
                 hesapSonucu -= sayi;
             }
             if (hesapSonucu == hedefSayi) {
-                throw new SonucErkenBulunduException((i + 1));
+                throw new EarlyConvergenceException((i + 1));
             }
             hangiSayi++;
         }
@@ -214,16 +214,16 @@ public class SayiArac {
         hangiSayi = 1;
         for (int i = baslangic; i < operatorler.length; i++) {
             int sayi = hesaplamaSayilari[sayilar[hangiSayi]];
-            if (operatorler[i] == SayiArac.ARTI) {
+            if (operatorler[i] == NumberUtility.ARTI) {
                 katar.append("+").append(sayi);
             }
-            if (operatorler[i] == SayiArac.CARPI) {
+            if (operatorler[i] == NumberUtility.CARPI) {
                 katar.append("*").append(sayi);
             }
-            if (operatorler[i] == SayiArac.BOLU) {
+            if (operatorler[i] == NumberUtility.BOLU) {
                 katar.append("/").append(sayi);
             }
-            if (operatorler[i] == SayiArac.EKSI) {
+            if (operatorler[i] == NumberUtility.EKSI) {
                 katar.append("-").append(sayi);
             }
             hangiSayi++;

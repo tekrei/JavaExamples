@@ -28,7 +28,7 @@ public class PojoGenerator {
     /**
      * This method generated POJO of the table given as parameter
      *
-     * @param tableName    table to create POJO from
+     * @param tableName table to create POJO from
      */
     public String getPojo(String tableName) {
         StringBuilder result = new StringBuilder("/*\n* TABLE_NAME: " + tableName + "\n*/\n");

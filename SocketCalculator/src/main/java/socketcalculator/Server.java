@@ -8,19 +8,19 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class CalcServerFrame extends JFrame {
+public class Server extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private ServerThread st;
     private JTextField txtPort;
 
-    private CalcServerFrame() {
+    private Server() {
         super();
         initialize();
     }
 
     public static void main(String[] args) {
-        new CalcServerFrame();
+        new Server();
     }
 
     private void initialize() {

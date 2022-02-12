@@ -6,10 +6,9 @@ import java.util.Arrays;
  * Board class containing operations
  */
 public class Board {
-    static final byte EMPTY = 0;
     public static final byte HUMAN = -1;
     public static final byte COMPUTER = 1;
-
+    static final byte EMPTY = 0;
     private byte[] board = new byte[9];
 
     public Board() {
@@ -69,11 +68,8 @@ public class Board {
         if (board[0] == player && board[4] == player && board[8] == player) {
             return true;
         }
-        if (board[2] == player && board[4] == player && board[6] == player) {
-            return true;
-        }
         //not winner
-        return false;
+        return board[2] == player && board[4] == player && board[6] == player;
     }
 
     /**

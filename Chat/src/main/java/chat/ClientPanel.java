@@ -8,7 +8,7 @@ import java.net.Socket;
  * Bu sinif istemci panelini olusturup tabpanede ilgili sahalarin yerlesmesini
  * istemci islemlerinin gerceklestirilmesini saglar
  */
-class IstemciPanel extends JPanel {
+class ClientPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
@@ -41,7 +41,7 @@ class IstemciPanel extends JPanel {
     // var
     private MesajDinleyici mesajDinleyici;
 
-    IstemciPanel() {
+    ClientPanel() {
         super();
         // Arayuzu olusturalim
         initialize();

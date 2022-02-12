@@ -9,7 +9,7 @@ import java.net.Socket;
  * Bu sinif sunucu panelin olusturup tabpanede ilgili alanlarin yerlesmesini ve
  * sunucu islemlerinin gerceklestirilmesini saglar
  */
-class SunucuPanel extends JPanel {
+class ServerPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,7 +26,7 @@ class SunucuPanel extends JPanel {
     // Sunucunun dinleme isini surdurecek olan thread
     private SunucuThread _thread = null;
 
-    SunucuPanel() {
+    ServerPanel() {
         super();
         // Arayuzu olusturalim
         initialize();

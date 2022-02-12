@@ -6,11 +6,11 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>Reflection</artifactId>
     <properties>
-        <main.class>reflector.ReflectionExample</main.class>
+        <main.class>reflector.Main</main.class>
     </properties>
     <parent>
-        <groupId>javaexamples</groupId>
-        <artifactId>main</artifactId>
+        <groupId>net</groupId>
+        <artifactId>javaexamples</artifactId>
         <version>1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>

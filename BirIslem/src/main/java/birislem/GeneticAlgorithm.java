@@ -1,25 +1,25 @@
 /*
  * BirIslem Java ile yazilmis ve Genetik Algoritma kullanimini ornekleme
- * amaci guden bir ozgur yazilimdir. 
+ * amaci guden bir ozgur yazilimdir.
  * Copyright (C) 2007
- *  
+ *
  * BirIslem is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 package birislem;
 
-import birislem.araclar.SayiArac;
+import birislem.utility.NumberUtility;
 
 import java.util.Arrays;
 
@@ -31,15 +31,15 @@ import java.util.Arrays;
  * <p>
  * Her bir Kromozom bir bireydir.
  */
-class GenetikHesaplama {
+class GeneticAlgorithm {
 
     // Singleton nesnemiz
-    private static GenetikHesaplama instance = null;
+    private static GeneticAlgorithm instance = null;
 
     /**
      * dis erisime kapali yapici
      */
-    private GenetikHesaplama() {
+    private GeneticAlgorithm() {
 
     }
 
@@ -48,9 +48,9 @@ class GenetikHesaplama {
      *
      * @return sinifin tek ornegi
      */
-    static GenetikHesaplama getInstance() {
+    static GeneticAlgorithm getInstance() {
         if (instance == null) {
-            instance = new GenetikHesaplama();
+            instance = new GeneticAlgorithm();
         }
         return instance;
     }
@@ -64,16 +64,16 @@ class GenetikHesaplama {
      * @param hedefSayi Ulasmak istedigimiz sayi
      * @return En iyi cozum
      */
-    Kromozom hesapla(int[] sayilar, int hedefSayi) {
+    Chromosome hesapla(int[] sayilar, int hedefSayi) {
         // FIX Uygun sezgilerle ve incelemeyle ise yaradigi bulundu
         // artik 1. nesil disindaki durumlarda da bulunabiliyor
 
         // Ilk olarak sayi aracimizi ilkliyoruz
         // Bu arac sayilarla ilgili bir cok islemi yapiyor
-        SayiArac.getInstance().initialize(sayilar, hedefSayi);
+        NumberUtility.getInstance().initialize(sayilar, hedefSayi);
         // 1000 bireyden olusan rastgele genlere sahip bireylerden
         // olusan toplum olusturuluyor
-        Kromozom[] toplum = rastgeleToplumOlustur(1000);
+        Chromosome[] toplum = rastgeleToplumOlustur(1000);
 
         // nesil sayacimiz
         int nesil = 0;
@@ -83,7 +83,7 @@ class GenetikHesaplama {
 
         // Siralama islemi sonunda en iyi bireyimiz en uygun bireyimizdir
         // bu da ilk bireydir
-        Kromozom enIyi = toplum[0].getClone();
+        Chromosome enIyi = toplum[0].getClone();
 
         // ne kadar surdugunu tutacagiz
         long baslangic = System.currentTimeMillis();
@@ -105,7 +105,7 @@ class GenetikHesaplama {
             // Eger elimizde hedef sayiyi tam olarak veren bir birey varsa
             // en iyi sonuc odur ve genetik hesaplamaya gerek yoktur
             // hemen en iyi kromozomu dondurebiliriz
-            Kromozom tamSonuc = tamSonuc(toplum);
+            Chromosome tamSonuc = tamSonuc(toplum);
             if (tamSonuc != null) {
                 enIyi = tamSonuc;
                 break;
@@ -127,7 +127,7 @@ class GenetikHesaplama {
         // Genetik hesaplama ile ilgili bilgileri verelim
         System.out.println("NESİL:" + nesil + " GEÇEN SÜRE:"
                 + (System.currentTimeMillis() - baslangic) + " ms" + " En İyi:"
-                + enIyi.toString());
+                + enIyi);
         // En iyi sonucumuzu dondurelim
         return enIyi;
     }
@@ -139,10 +139,10 @@ class GenetikHesaplama {
      * @param toplum kontrol edilecek olan toplum
      * @return tam sonuc varsa ilgili birey, yoksa null
      */
-    private Kromozom tamSonuc(Kromozom[] toplum) {
-        for (Kromozom kromozom : toplum) {
-            if (tamSonucmu(kromozom)) {
-                return kromozom;
+    private Chromosome tamSonuc(Chromosome[] toplum) {
+        for (Chromosome chromosome : toplum) {
+            if (tamSonucmu(chromosome)) {
+                return chromosome;
             }
         }
         return null;
@@ -155,7 +155,7 @@ class GenetikHesaplama {
      * @param birey kontrol edilecek olan birey
      * @return tam sonuc ise true, degilse false
      */
-    private boolean tamSonucmu(Kromozom birey) {
+    private boolean tamSonucmu(Chromosome birey) {
         // Eger bir birey tam sonuc uretiyorsa uygunlugu 0 olacaktir
         return birey.uygunluk() == 0;
     }
@@ -163,20 +163,20 @@ class GenetikHesaplama {
     /**
      * Asagidaki metod mutasyon islemini toplum uzerinde uygular
      */
-    private Kromozom[] mutasyon(Kromozom[] toplum) {
+    private Chromosome[] mutasyon(Chromosome[] toplum) {
         for (int i = 0; i < toplum.length; i++) {
             try {
-                Kromozom birey = toplum[i].getClone();
+                Chromosome birey = toplum[i].getClone();
                 // Sayi Mutasyonu
                 boolean mutasyon = false;
                 // Toplumun sadece %2'sinde sayi mutasyonu oluyor
-                if (SayiArac.getInstance().nextFloat() < 0.2) {
+                if (NumberUtility.getInstance().nextFloat() < 0.2) {
                     sayiMutasyon(birey);
                     mutasyon = true;
                 }
                 // Operator mutasyonu
                 // Toplumun sadece %1'inde operator mutasyonu oluyor
-                if (SayiArac.getInstance().nextFloat() < 0.1) {
+                if (NumberUtility.getInstance().nextFloat() < 0.1) {
                     operatorMutasyon(birey);
                     mutasyon = true;
                 }
@@ -198,10 +198,10 @@ class GenetikHesaplama {
     /**
      * Sayilar arasindaki mutasyon islemi
      */
-    private void sayiMutasyon(Kromozom birey) {
+    private void sayiMutasyon(Chromosome birey) {
         // Rastgele iki sayi secilip yerleri degistiriliyor
-        int birinci = SayiArac.getInstance().nextInt(6);
-        int ikinci = SayiArac.getInstance().nextInt(6);
+        int birinci = NumberUtility.getInstance().nextInt(6);
+        int ikinci = NumberUtility.getInstance().nextInt(6);
         int temp = birey.getSayi(birinci);
         birey.setSayi(birinci, birey.getSayi(ikinci));
         birey.setSayi(ikinci, temp);
@@ -210,10 +210,10 @@ class GenetikHesaplama {
     /**
      * Parametreler arasindaki mutasyon
      */
-    private void operatorMutasyon(Kromozom birey) {
+    private void operatorMutasyon(Chromosome birey) {
         // Rastgele iki parametre secilip yerleri degistiriliyor
-        int birinci = SayiArac.getInstance().nextInt(5);
-        int ikinci = SayiArac.getInstance().nextInt(5);
+        int birinci = NumberUtility.getInstance().nextInt(5);
+        int ikinci = NumberUtility.getInstance().nextInt(5);
         int temp = birey.getOperator(birinci);
         birey.setOperator(birinci, birey.getOperator(ikinci));
         birey.setOperator(ikinci, temp);
@@ -222,15 +222,15 @@ class GenetikHesaplama {
     /**
      * Asagidaki metod toplum uzerinde caprazlama islemini uygular
      */
-    private Kromozom[] caprazla(Kromozom[] toplum) {
+    private Chromosome[] caprazla(Chromosome[] toplum) {
         for (int i = 0; i < toplum.length - 1; i++) {
             try {
                 // Toplumun sadece %90'i uzerinde caprazlama yapiliyor
-                if (SayiArac.getInstance().nextFloat() < 0.9) {
+                if (NumberUtility.getInstance().nextFloat() < 0.9) {
                     // Sadece toplum[i] degistiriliyor
                     // esle(toplum[i], toplum[i + 1]);
                     // eslemenin yapilacagi ikinci birey rastgele seciliyor
-                    esle(toplum[i], toplum[SayiArac.getInstance().nextInt(
+                    esle(toplum[i], toplum[NumberUtility.getInstance().nextInt(
                             toplum.length)]);
                 }
             } catch (Exception e) {
@@ -247,7 +247,7 @@ class GenetikHesaplama {
      * @param ilk    birinci (degisecek olan) birey
      * @param ikinci caprazlama yardimcisi birey
      */
-    private void esle(Kromozom ilk, Kromozom ikinci) {
+    private void esle(Chromosome ilk, Chromosome ikinci) {
 
         // Caprazlama sonuclarini saklamak icin
         int[] yeniSayilar = new int[6];
@@ -332,11 +332,11 @@ class GenetikHesaplama {
      * @param toplumBuyuklugu toplumdaki birey sayisi
      * @return olusturulan toplum
      */
-    private Kromozom[] rastgeleToplumOlustur(int toplumBuyuklugu) {
-        Kromozom[] toplum = new Kromozom[toplumBuyuklugu];
+    private Chromosome[] rastgeleToplumOlustur(int toplumBuyuklugu) {
+        Chromosome[] toplum = new Chromosome[toplumBuyuklugu];
         for (int i = 0; i < toplumBuyuklugu; i++) {
-            toplum[i] = new Kromozom(SayiArac.getInstance()
-                    .getRastgeleSayilar(), SayiArac.getInstance()
+            toplum[i] = new Chromosome(NumberUtility.getInstance()
+                    .getRastgeleSayilar(), NumberUtility.getInstance()
                     .getRastgeleOperatorler());
         }
         return toplum;

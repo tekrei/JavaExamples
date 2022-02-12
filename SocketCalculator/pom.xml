@@ -6,11 +6,11 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>SocketCalculator</artifactId>
     <properties>
-        <main.class>socketcalculator.CalcClientFrame</main.class>
+        <main.class>socketcalculator.Client</main.class>
     </properties>
     <parent>
-        <groupId>javaexamples</groupId>
-        <artifactId>main</artifactId>
+        <groupId>net</groupId>
+        <artifactId>javaexamples</artifactId>
         <version>1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>

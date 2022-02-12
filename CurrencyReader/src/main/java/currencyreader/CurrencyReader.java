@@ -31,7 +31,7 @@ class CurrencyReader {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             // we are going to download latest exchange rates XML file from an URL
             // it is possible to use a File URI here
-            URL u = new URL("http://www.tcmb.gov.tr/kurlar/today.xml");
+            URL u = new URL("https://www.tcmb.gov.tr/kurlar/today.xml");
             // saveLocally(u.openStream());
 
             // Read document from URL and parse its XML content
@@ -80,10 +80,12 @@ class CurrencyReader {
 
     private String getCharacterDataFromElement(Element e) {
         try {
-            Node child = e.getFirstChild();
-            if (child instanceof CharacterData) {
-                CharacterData cd = (CharacterData) child;
-                return cd.getData();
+            if (e != null) {
+                Node child = e.getFirstChild();
+                if (child instanceof CharacterData) {
+                    CharacterData cd = (CharacterData) child;
+                    return cd.getData();
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
