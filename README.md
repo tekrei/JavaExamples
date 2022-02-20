@@ -26,6 +26,19 @@ Simple experimental Java program examples
 - [ThreadSync](./ThreadSync): A thread synchronization example (2006)
 - [xox](./xox): A Tic Tac Toe implementation based on minimax (2006)
 
+All projects are using [maven](https://maven.apache.org).
+
+It is possible to build executable JARs using the following command in project level:
+
+    mvn clean install
+
+And run generated JAR file in `target` folder of `CurrencyReader`, `BirIslem`, `Chat`, `DB2POJO`, `JDIP`
+, `Java3DExamples`
+, `Notepad`, `OnlineTranslator`, `Reflection`, `SimpleBrowser`, `ThreadSync`, and `xox` projects (where `main.class`
+property is available in their `pom.xml` file.):
+
+    java -jar <project name>/target/<name of the JAR file>
+
 ## LICENSE
 
 All these programs are a free software: you can redistribute them and/or modify them under the terms of the
