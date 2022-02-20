@@ -7,6 +7,9 @@ Simple experimental Java program examples
 - [Chat](./Chat): A chat implementation (2007)
 - [CurrencyReader](./CurrencyReader): A XML reading and parsing example (2006)
 - [DB2POJO](./DB2POJO): An example project for creating POJO classes from database (2006)
+- [DSRMI](./DSRMI): An example project for
+  using [Java RMI](https://docs.oracle.com/en/java/javase/11/docs/api/java.rmi/java/rmi/package-summary.html)
+  and [Jackson XML library](https://github.com/FasterXML/jackson-dataformat-xml) (2006)
 - [Java 3D Examples](./Java3DExamples): Simple examples of how to use
   [Java 3D API](http://www.oracle.com/technetwork/articles/javase/index-jsp-138252.html)
   to create scenes.
