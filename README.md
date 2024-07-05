@@ -13,6 +13,7 @@ Simple experimental Java program examples
 - [Java 3D Examples](./Java3DExamples): Simple examples of how to use
   [Java 3D API](http://www.oracle.com/technetwork/articles/javase/index-jsp-138252.html)
   to create scenes.
+- [JDBC](./JDBC): An example project on how to use [JDBC](https://docs.oracle.com/javase/tutorial/jdbc/basics/index.html)
 - [JDIP](./JDIP): A simple Digital Image Processing application that shows various
   [Image Processing filters](http://www.jhlabs.com/ip/filters/index.html) on images (2006)
 - [Notepad](./Notepad): A very simple notepad implementation that is able to load TXT files

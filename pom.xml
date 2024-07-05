@@ -41,6 +41,7 @@
         <module>Chat</module>
         <module>CurrencyReader</module>
         <module>Java3DExamples</module>
+        <module>JDBC</module>
         <module>JDIP</module>
         <module>Notepad</module>
         <module>Reflection</module>

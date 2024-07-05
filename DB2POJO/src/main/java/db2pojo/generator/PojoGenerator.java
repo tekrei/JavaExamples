@@ -8,7 +8,7 @@ import java.util.Locale;
 /**
  * This class generates POJO from parameters
  *
- * @author emre
+ * @author tekrei
  */
 public class PojoGenerator {
 

@@ -17,7 +17,7 @@ import javax.vecmath.Vector3f;
 import java.awt.*;
 
 /**
- * Created by T. E. Kalayci on 06-May-2017
+ * Created by tekrei on 06-May-2017
  */
 abstract class Java3DPanel extends JPanel {
 

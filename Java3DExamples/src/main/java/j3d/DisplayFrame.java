@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by kalayci on 06-May-17
+ * Created by tekrei on 06-May-17
  */
 public class DisplayFrame extends JFrame {
 
