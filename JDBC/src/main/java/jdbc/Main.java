@@ -10,8 +10,13 @@ public class Main {
 		// Get a connection from Database Connection Manager
 		Connection conn = ConnectionManager.getInstance().getConnection();
 		try {
-			// Insert record to database
+			// Create table
 			PreparedStatement ps = conn
+					.prepareStatement("CREATE TABLE Example (Field VARCHAR)");
+			ps.execute();
+
+			// Insert record to database
+			ps = conn
 					.prepareStatement("INSERT INTO Example (Field) VALUES (" + System.currentTimeMillis() + ")");
 			ps.execute();
 			// Select record from database

@@ -18,7 +18,7 @@ import java.io.PrintWriter;
 public class Db2PojoPanel extends JPanel implements ClipboardOwner {
 
     private static final long serialVersionUID = 1L;
-    private final String[] defaultDriver = {"org.sqlite.JDBC", "com.mysql.jdbc.Driver",
+    private final String[] defaultDriver = {"org.sqlite.JDBC", "org.mariadb.jdbc.Driver",
             "oracle.jdbc.driver.OracleDriver", "sun.jdbc.odbc.JdbcOdbcDriver"};
     private final Clipboard clipboard = getToolkit().getSystemClipboard();
     private JTextField txtURL = null;

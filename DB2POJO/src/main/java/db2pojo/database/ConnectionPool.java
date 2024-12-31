@@ -43,11 +43,6 @@ class ConnectionPool {
         passiveConnections = new ArrayList<>(connectionCount);
         activeConnections = new ArrayList<>(connectionCount);
 
-        try {
-            Class.forName(driverName).newInstance();
-        } catch (Exception e) {
-            throw new Exception("Couldn't find database driver!");
-        }
         for (int i = 0; i < connectionCount; i++) {
 
             try {
